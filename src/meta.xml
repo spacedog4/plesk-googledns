@@ -9,6 +9,7 @@
   <version>1.0</version>
   <release>1</release>
   <vendor/>
+  <os>unix</os>
   <url>https://github.com/spacedog4/plesk-googledns</url>
   <plesk_min_version>18.0.26</plesk_min_version>
 </module>

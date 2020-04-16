@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="976a93a1-3273-4d51-8b5b-c2bfc596a0cf" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/meta.xml" afterPath="$PROJECT_DIR$/src/meta.xml" />
+      <change beforePath="$PROJECT_DIR$/src/plib/library/Client.php" afterPath="$PROJECT_DIR$/src/plib/library/Client.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,8 +60,8 @@
       <file leaf-file-name="meta.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/meta.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+            <state relative-caret-position="53">
+              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -79,15 +82,25 @@
       <file leaf-file-name="Client.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/plib/library/Client.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="45" column="32" lean-forward="false" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
               <folding>
                 <element signature="e#6#1256#0#PHP" expanded="true" />
-                <marker date="1587056173381" expanded="true" signature="14312:14427" ph="..." />
-                <marker date="1587056173381" expanded="true" signature="14318:14417" ph="..." />
-                <marker date="1587056173381" expanded="true" signature="14329:14410" ph="..." />
-                <marker date="1587056173381" expanded="true" signature="14340:14398" ph="..." />
+                <marker date="1587057359319" expanded="true" signature="14149:14264" ph="..." />
+                <marker date="1587057359319" expanded="true" signature="14155:14254" ph="..." />
+                <marker date="1587057359319" expanded="true" signature="14166:14247" ph="..." />
+                <marker date="1587057359319" expanded="true" signature="14177:14235" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,19 +112,6 @@
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#6#1256#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pre-uninstall.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/plib/scripts/pre-uninstall.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="26" column="3" lean-forward="false" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
-              <folding>
-                <element signature="e#6#1256#0#PHP" expanded="true" />
-                <marker date="1587056114516" expanded="true" signature="1379:1417" ph="DROP TABLE I... " />
               </folding>
             </state>
           </provider>
@@ -145,8 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>buttonYes</find>
-      <find>pageTitle</find>
       <find>indexPageTitle</find>
       <find>clientIdLabel</find>
       <find>clientSecretLabel</find>
@@ -175,6 +173,8 @@
       <find>sync</find>
       <find>syncDomains</find>
       <find>authori</find>
+      <find>BASE_URL</find>
+      <find>REDIRECT_URIS</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -209,7 +209,6 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/htdocs/index.php" />
         <option value="$PROJECT_DIR$/src/plib/hooks/CustomButtons.php" />
-        <option value="$PROJECT_DIR$/src/meta.xml" />
         <option value="$PROJECT_DIR$/src/plib/views/scripts/index/index.phtml" />
         <option value="$PROJECT_DIR$/src/plib/views/scripts/index/domains.phtml" />
         <option value="$PROJECT_DIR$/src/plib/scripts/post-install.php" />
@@ -217,11 +216,12 @@
         <option value="$PROJECT_DIR$/src/plib/scripts/pre-uninstall.php" />
         <option value="$PROJECT_DIR$/src/plib/resources/locales/en-US.php" />
         <option value="$PROJECT_DIR$/src/plib/resources/locales/pt-BR.php" />
-        <option value="$PROJECT_DIR$/src/plib/library/Client.php" />
         <option value="$PROJECT_DIR$/src/plib/library/EventListener.php" />
         <option value="$PROJECT_DIR$/src/plib/library/List/Domains.php" />
         <option value="$PROJECT_DIR$/src/plib/library/Form/Settings.php" />
         <option value="$PROJECT_DIR$/src/plib/controllers/IndexController.php" />
+        <option value="$PROJECT_DIR$/src/plib/library/Client.php" />
+        <option value="$PROJECT_DIR$/src/meta.xml" />
       </list>
     </option>
   </component>
@@ -301,6 +301,25 @@
             </path>
             <path>
               <item name="plesk-googledns" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plesk-googledns" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="htdocs" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="plesk-googledns" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plesk-googledns" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="plib" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="plesk-googledns" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plesk-googledns" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="plib" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="library" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="plesk-googledns" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
             </path>
           </expand>
@@ -359,12 +378,12 @@
       <workItem from="1586900256399" duration="4716000" />
       <workItem from="1586950885034" duration="11073000" />
       <workItem from="1586973622592" duration="10735000" />
-      <workItem from="1587038017807" duration="18560000" />
+      <workItem from="1587038017807" duration="19494000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45084000" />
+    <option name="totallyTimeSpent" value="46018000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
@@ -450,10 +469,10 @@
           <caret line="225" column="25" lean-forward="false" selection-start-line="225" selection-start-column="25" selection-end-line="225" selection-end-column="25" />
           <folding>
             <element signature="e#6#1256#0#PHP" expanded="true" />
-            <marker date="1587056173381" expanded="true" signature="14312:14427" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14318:14417" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14329:14410" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14340:14398" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14149:14264" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14155:14254" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14166:14247" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14177:14235" ph="..." />
           </folding>
         </state>
       </provider>
@@ -498,10 +517,10 @@
           <caret line="579" column="66" lean-forward="false" selection-start-line="579" selection-start-column="66" selection-end-line="579" selection-end-column="66" />
           <folding>
             <element signature="e#6#1256#0#PHP" expanded="true" />
-            <marker date="1587056173381" expanded="true" signature="14312:14427" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14318:14417" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14329:14410" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14340:14398" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14149:14264" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14155:14254" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14166:14247" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14177:14235" ph="..." />
           </folding>
         </state>
       </provider>
@@ -598,10 +617,10 @@
           <caret line="528" column="1" lean-forward="false" selection-start-line="528" selection-start-column="1" selection-end-line="528" selection-end-column="1" />
           <folding>
             <element signature="e#6#1256#0#PHP" expanded="true" />
-            <marker date="1587056173381" expanded="true" signature="14312:14427" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14318:14417" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14329:14410" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14340:14398" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14149:14264" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14155:14254" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14166:14247" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14177:14235" ph="..." />
           </folding>
         </state>
       </provider>
@@ -743,14 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -816,7 +827,7 @@
         <state relative-caret-position="598">
           <caret line="26" column="3" lean-forward="false" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
           <folding>
-            <element signature="e#6#1256#0#PHP" expanded="true" />
+            <element signature="e#6#1256#0#PHP" expanded="false" />
             <marker date="1587056114516" expanded="true" signature="1379:1417" ph="DROP TABLE I... " />
           </folding>
         </state>
@@ -848,30 +859,6 @@
           <caret line="298" column="9" lean-forward="false" selection-start-line="298" selection-start-column="9" selection-end-line="298" selection-end-column="9" />
           <folding>
             <element signature="e#6#1256#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plib/library/EventListener.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#1256#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plib/library/Client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#1256#0#PHP" expanded="true" />
-            <marker date="1587056173381" expanded="true" signature="14312:14427" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14318:14417" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14329:14410" ph="..." />
-            <marker date="1587056173381" expanded="true" signature="14340:14398" ph="..." />
           </folding>
         </state>
       </provider>
@@ -908,10 +895,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/plib/library/EventListener.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#1256#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plib/library/Client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="45" column="32" lean-forward="false" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
+          <folding>
+            <element signature="e#6#1256#0#PHP" expanded="true" />
+            <marker date="1587057359319" expanded="true" signature="14149:14264" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14155:14254" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14166:14247" ph="..." />
+            <marker date="1587057359319" expanded="true" signature="14177:14235" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/meta.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        <state relative-caret-position="53">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding />
         </state>
       </provider>

@@ -5,11 +5,11 @@
       <paths name="Plesk Dev">
         <serverdata>
           <mappings>
-            <mapping deploy="/opt/psa/admin/htdocs/modules/googledns" local="$PROJECT_DIR$/htdocs" web="/" />
-            <mapping deploy="/opt/psa/admin/plib/modules/googledns" local="$PROJECT_DIR$/plib" web="/" />
+            <mapping deploy="/opt/psa/admin/htdocs/modules/googledns" local="$PROJECT_DIR$/src/htdocs" web="/" />
+            <mapping deploy="/opt/psa/admin/plib/modules/googledns" local="$PROJECT_DIR$/src/plib" web="/" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/plib/vendor" />
+            <excludedPath local="true" path="$PROJECT_DIR$/src/plib/vendor" />
           </excludedPaths>
         </serverdata>
       </paths>

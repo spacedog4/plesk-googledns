@@ -36,9 +36,6 @@ class Modules_Googledns_Client {
     const AUTH_URI = "https://accounts.google.com/o/oauth2/auth";
     const TOKEN_URI = "https://oauth2.googleapis.com/token";
     const AUTH_PROVIDER_X506_CERT_URL = "https://www.googleapis.com/oauth2/v1/certs";
-    const REDIRECT_URIS = ["http://localhost:8880/modules/googledns/index.php/index/authenticate"];
-
-    const BASE_URL = 'https://api.cloudflare.com/client/v4/';
 
     const SERVICE_VERSION = '1.6.9.1';
 
@@ -590,7 +587,7 @@ APICALL;
                 "client_id"     => $this->client_id,
                 "project_id"    => $this->project_id,
                 "client_secret" => $this->client_secret,
-                "redirect_uris" => static::REDIRECT_URIS
+                "redirect_uris" => $this->redirect_uris
             ]
         ]);
         $client->setAccessType('offline');
