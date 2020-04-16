@@ -66,7 +66,9 @@ class Modules_Googledns_Client {
         $this->project_id = $project_id;
 
         $this->redirect_uris = [
-            $_SERVER['SERVER_NAME'] . "/modules/googledns/index.php/index/authenticate"
+            (isset($_SERVER['HTTPS_HOST']) ? "https://" : "http://") .
+            (isset($_SERVER['HTTPS_HOST']) ? $_SERVER['HTTPS_HOST'] : $_SERVER['HTTP_HOST']) .
+            "/modules/googledns/index.php/index/authenticate"
         ];
 
         $this->createGoogleClient();
