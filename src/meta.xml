@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020. André Luis Monteiro. -->
+<module>
+  <id>googledns</id>
+  <name>Google DNS</name>
+  <description>This extension does a one-way sync of Plesk's DNS settings to Google DNS..</description>
+  <description xml:lan="pt-BR">Esta extensão faz uma sincronização unidirecional das configurações de DNS do Plesk para o Google DNS</description>
+  <category>dns</category>
+  <version>1.0</version>
+  <release>1</release>
+  <vendor/>
+  <url>https://github.com/spacedog4/plesk-googledns</url>
+  <plesk_min_version>18.0.26</plesk_min_version>
+</module>

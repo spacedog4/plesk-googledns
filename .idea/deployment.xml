@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Plesk Dev">
+    <serverData>
+      <paths name="Plesk Dev">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/opt/psa/admin/htdocs/modules/googledns" local="$PROJECT_DIR$/htdocs" web="/" />
+            <mapping deploy="/opt/psa/admin/plib/modules/googledns" local="$PROJECT_DIR$/plib" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/plib/vendor" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

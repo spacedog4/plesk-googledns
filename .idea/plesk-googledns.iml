@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/firebase/php-jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/google/apiclient" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/google/apiclient-services" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/google/auth" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/phpseclib/phpseclib" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/plib/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/firebase/php-jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/google/apiclient" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/google/apiclient-services" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/google/auth" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpseclib/phpseclib" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ralouphie/getallheaders" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

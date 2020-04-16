@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="C:\Users\User\code\plesk libs\pm-api-stubs-master\pm-api-stubs-master\pm" />
+      <path value="C:\Users\User\code\plesk libs\ZendFramework-1.12.20\ZendFramework-1.12.20\library\Zend" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/plib/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/plib/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/plib/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/plib/vendor/google/apiclient" />
+      <path value="$PROJECT_DIR$/plib/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/plib/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/plib/vendor/composer" />
+      <path value="$PROJECT_DIR$/plib/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/plib/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/plib/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/plib/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/plib/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/plib/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/plib/vendor/guzzlehttp/psr7" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+</project>

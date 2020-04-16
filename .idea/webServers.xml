@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9df7e895-c950-4fb4-ac3e-f65ca4725e35" name="Plesk Dev" url="http://localhost">
+        <fileTransfer host="localhost" port="2225" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="2225" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
