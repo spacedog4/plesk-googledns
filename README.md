@@ -1,5 +1,5 @@
 # Google DNS Extension for Plesk 18.0.26+
-![Google](googlelogo.png)
+<img src="googlelogo.png" alt="Google Logo" width="350">
 
 ![Google DNS settings](src/_meta/screenshots/1.png)
 ![Google DNS settings](src/_meta/screenshots/2.png)
