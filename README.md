@@ -1,3 +1,5 @@
+[Support me with any value](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=GXSHAPXEWM8QU&currency_code=USD)
+
 # Google DNS Extension for Plesk 18.0.26+
 <img src="googlelogo.png" alt="Google Logo" width="350">
 
