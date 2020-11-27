@@ -13,6 +13,14 @@
           </excludedPaths>
         </serverdata>
       </paths>
+      <paths name="Prod">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/opt/psa/admin/htdocs/modules/googledns" local="$PROJECT_DIR$/src/htdocs" web="/" />
+            <mapping deploy="/opt/psa/admin/plib/modules/googledns" local="$PROJECT_DIR$/src/plib" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

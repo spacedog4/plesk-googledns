@@ -29,8 +29,8 @@
 /**
  * Class Modules_Googledns_EventListener
  */
-class Modules_Googledns_EventListener implements EventListener
-{
+class Modules_Googledns_EventListener implements EventListener {
+
     public function filterActions()
     {
         return [
@@ -46,48 +46,44 @@ class Modules_Googledns_EventListener implements EventListener
      * @param $oldValues
      * @param $newValues
      *
-     * @throws Exception
-     * @throws Google_Exception
-     * @throws Zend_Db_Adapter_Exception
-     * @throws Zend_Db_Statement_Exception
-     * @throws Zend_Db_Table_Exception
-     * @throws Zend_Db_Table_Row_Exception
-     * @throws pm_Exception
-     * @throws pm_Exception_InvalidArgumentException
      */
     public function handleEvent($objectType, $objectId, $action, $oldValues, $newValues)
     {
-        pm_Context::init('googledns');
-        switch ($action) {
-            case 'domain_create':
-                if (!pm_Settings::get(Modules_Googledns_Form_Settings::NEW_DOMAINS)) {
-                    return;
-                }
+        try {
+            switch ($action) {
+                case 'domain_create':
+                    if (!pm_Settings::get(Modules_Googledns_Form_Settings::NEW_DOMAINS)) {
+                        return;
+                    }
 
-                $googlednsDomain = new pm_Domain($objectId);
-                $savedDomains = @json_decode(pm_Settings::get(Modules_Googledns_List_Domains::DOMAINS), true);
-                if (!is_array($savedDomains)) {
-                    $savedDomains = [];
-                }
-                $savedDomains[] = $googlednsDomain->getName();
-                pm_Settings::set(Modules_Googledns_List_Domains::DOMAINS, json_encode($savedDomains));
-                break;
-            case 'domain_dns_update':
-                // Push all new/updated entries of this domain
-                if (!pm_Settings::get(Modules_Googledns_Form_Settings::ACCESS_TOKEN)) {
-                    return;
-                }
+                    $googlednsDomain = new pm_Domain($objectId);
+                    $savedDomains = @json_decode(pm_Settings::get(Modules_Googledns_List_Domains::DOMAINS), true);
+                    if (!is_array($savedDomains)) {
+                        $savedDomains = [];
+                    }
+                    $savedDomains[] = $googlednsDomain->getName();
+                    pm_Settings::set(Modules_Googledns_List_Domains::DOMAINS, json_encode($savedDomains));
+                    break;
+                case 'domain_dns_update':
+                    // Push all new/updated entries of this domain
+                    if (!pm_Settings::get(Modules_Googledns_Form_Settings::ACCESS_TOKEN)) {
+                        return;
+                    }
 
-                $domain = new pm_Domain($objectId);
-                $savedDomains = @json_decode(pm_Settings::get(Modules_Googledns_List_Domains::DOMAINS), true);
-                if (!is_array($savedDomains)) {
-                    $savedDomains = [];
-                }
-                if (!in_array($domain->getName(), $savedDomains)) {
-                    return;
-                }
-                Modules_Googledns_Client::getInstance()->syncDomains([$domain->getName()]);
-                break;
+                    $domain = new pm_Domain($objectId);
+                    $savedDomains = @json_decode(pm_Settings::get(Modules_Googledns_List_Domains::DOMAINS), true);
+                    if (!is_array($savedDomains)) {
+                        $savedDomains = [];
+                    }
+                    if (!in_array($domain->getName(), $savedDomains)) {
+                        return;
+                    }
+                    Modules_Googledns_Client::getInstance()->syncDomains([$domain->getName()]);
+                    break;
+            }
+        } catch (Exception $e) {
+            $logger = pm_Bootstrap::getContainer()->get(Psr\Log\LoggerInterface::class);
+            $logger->error(json_encode($e));
         }
     }
 }

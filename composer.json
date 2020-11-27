@@ -1,18 +1,28 @@
 {
-    "name": "spacedog4/plesk-googledns",
-    "description": "Google DNS connector for Plesk",
-    "config": {
-        "vendor-dir": "src/plib/vendor"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "André Luis Monteiro",
-            "email": "andre_luis_monteiro1998@hotmail.com"
-        }
-    ],
-    "require": {
-        "php": "^7.1",
-        "google/apiclient": "^2.0"
+  "name": "spacedog4/plesk-googledns",
+  "description": "Google DNS connector for Plesk",
+  "config": {
+    "vendor-dir": "src/plib/vendor"
+  },
+  "autoload": {
+    "psr-4": {
+      "PleskExt\\GoogleDns\\": "modules/googledns/library/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PleskExt\\GoogleDns\\": "src/plib/library/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "André Luis Monteiro",
+      "email": "andre_luis_monteiro1998@hotmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "google/apiclient": "^2.0"
+  }
 }

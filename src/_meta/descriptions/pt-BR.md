@@ -1,3 +1,7 @@
+[Me ajude com qualquer valor](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=GXSHAPXEWM8QU&currency_code=USD)
+
+Algum erro ou melhoria? compartilhe no meu repositório: https://github.com/spacedog4/plesk-googledns
+
 Essa extensão integra o Plesk com o Google DNS, então você pode:
 - Sincronizar todos os registros das zonas de DNS entre o Plesk e o Google DNS de uma vez
 - Enviar atualizações de DNS automaticamente para o Google DNS
@@ -5,24 +9,24 @@ Essa extensão integra o Plesk com o Google DNS, então você pode:
 ### Como configurar
 
 Você precisa ativar o Cloud DNS API no Google API Console
-- Va para [Google Api Console](https://console.developers.google.com/apis/dashboard) 
+- Vá para [Google Api Console](https://console.developers.google.com/apis/dashboard) 
 - Escolhe o seu projeto
 - Pesquise por "DNS" e selecione ["Cloud DNS API"](https://console.developers.google.com/apis/library/dns.googleapis.com)
 - Ative "Cloud DNS API", você talvez precisar-a ativar a cobrança em sua conta (Não se preocupe, nada será cobrado por que a cota é limitada)
 
 Se você está usando um domínio no plesk ao invés de um endereço IP, você vai precisar adicionar ele a [lista de domínios autorizados](https://console.developers.google.com/apis/credentials/consent)
-- Va para [Google Api Console](https://console.developers.google.com/apis/dashboard) 
+- Vá para [Google Api Console](https://console.developers.google.com/apis/dashboard) 
 - Escolhe o seu projeto
-- No menu a esquerda, va para [Tela de consentimento OAuth](https://console.developers.google.com/apis/credentials/consent)
+- No menu a esquerda, vá para [Tela de consentimento OAuth](https://console.developers.google.com/apis/credentials/consent)
 - Escolha Externo
 - Role até "Domínios Autorizados" e adicione o domíno sem qualquer hhtp/https ou caminho. Ex.: my-plesk-domain.com
 - Pressione Enter
 - Salve
 
 Vá deverá criar uma credencial para OAuth 2.0 no Google API Console
-- Va para [Google Api Console](https://console.developers.google.com/apis/dashboard) 
+- Vá para [Google Api Console](https://console.developers.google.com/apis/dashboard) 
 - Escolhe o seu projeto
-- No menu a esquerda, va para [Credenciais](https://console.developers.google.com/apis/credentials)
+- No menu a esquerda, vá para [Credenciais](https://console.developers.google.com/apis/credentials)
 - Clique em "Criar crendiais" 
 - Clique em "ID do cliente OAuth"
 - Escolhe "Aplicativo da Web"

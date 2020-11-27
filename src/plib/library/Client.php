@@ -28,6 +28,8 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use PleskExt\GoogleDns\Db;
+
 /**
  * Class Module_Googledns_Client
  */
@@ -39,15 +41,17 @@ class Modules_Googledns_Client {
 
     const SERVICE_VERSION = '1.6.9.1';
 
-    private $client_id;
-    private $client_secret;
-    private $project_id;
+    private $client_id = '';
+    private $client_secret = '';
+    private $project_id = '';
 
     private $redirect_uris = [];
 
     private $google_client;
 
     public static $zones = [];
+
+    public $logger;
 
     /**
      * Singleton
@@ -65,10 +69,14 @@ class Modules_Googledns_Client {
         $this->client_secret = $client_secret;
         $this->project_id = $project_id;
 
+        $this->logger = pm_Bootstrap::getContainer()->get(Psr\Log\LoggerInterface::class);
+
+        pm_Log::info()
+
         $this->redirect_uris = [
-            (isset($_SERVER['HTTPS_HOST']) ? "https://" : "http://") .
-            (isset($_SERVER['HTTPS_HOST']) ? $_SERVER['HTTPS_HOST'] : $_SERVER['HTTP_HOST']) .
-            "/modules/googledns/index.php/index/authenticate"
+            ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? "https://" : "http://") .
+            $_SERVER['HTTP_HOST'] .
+            pm_Context::getActionUrl('index', 'authenticate')
         ];
 
         $this->createGoogleClient();
@@ -117,13 +125,12 @@ class Modules_Googledns_Client {
         $client = $this->authenticate();
         $dns = new Google_Service_Dns($client);
 
-//        header("Content-Type: application/json");
-//        die(var_dump($dns->managedZones->listManagedZones('velvety-being-233017')));
-
-        $results = $dns->managedZones->listManagedZones('velvety-being-233017');
+        $results = $dns->managedZones->listManagedZones(pm_Settings::get(Modules_Googledns_Form_Settings::PROJECT_ID));
 
         if (!isset($results['managedZones'])) {
-            throw new Exception('Google DNS Error: ' . json_encode($results));
+            $msg = 'Google DNS Error: ' . json_encode($results);
+            $this->logger->error($msg);
+            throw new pm_Exception($msg);
         }
 
         static::$zones = array_combine(
@@ -141,10 +148,10 @@ class Modules_Googledns_Client {
     /**
      * @param $domains
      *
-     * @throws Zend_Db_Adapter_Exception
-     * @throws Zend_Db_Statement_Exception
-     * @throws pm_Exception
      * @throws Exception
+     * @throws Google_Exception
+     * @throws Zend_Db_Adapter_Exception
+     * @throws pm_Exception
      */
     public function syncDomains($domains)
     {
@@ -156,6 +163,19 @@ class Modules_Googledns_Client {
             // Detect updated records
             $pleskDomain = pm_Domain::getByName($domain);
             $pleskRecords = static::getPleskDnsEntries($domain);
+
+            $equalsRecordsByType = [];
+            foreach ($pleskRecords as $pleskRecord) {
+                if ($pleskRecord['type'] != 'MX') {
+                    if (isset($equalsRecordsByType[$pleskRecord['type']]) && in_array($pleskRecord['name'], $equalsRecordsByType[$pleskRecord['type']])) {
+                        $msg = "Google DNS Error: You have two or more records with the same name and type, that is not allowed!";
+                        $this->logger->error($msg);
+                        throw new pm_Exception($msg);
+                    } else {
+                        $equalsRecordsByType[$pleskRecord['type']][] = $pleskRecord['name'];
+                    }
+                }
+            }
 
             $googlednsRecords = static::getGooglednsEntries($domain);
 
@@ -253,13 +273,28 @@ class Modules_Googledns_Client {
                     continue;
                 }
 
-                $deletions[] = Modules_Googledns_Form_Settings::createResourceRecordSet($pleskDomain, $googlednsFound);
+                $deletions[] = Modules_Googledns_Form_Settings::createResourceRecordSet($pleskDomain, $googlednsFound, true);
                 $additions[] = Modules_Googledns_Form_Settings::createResourceRecordSet($pleskDomain, $updatedRecord);
             }
 
             // Remove from Google DNS
             foreach ($removedRecords as $removedRecord) {
-                $deletions[] = Modules_Googledns_Form_Settings::createResourceRecordSet($pleskDomain, $removedRecord);
+                $googlednsFound = null;
+
+                foreach ($googlednsRecords as $googlednsRecord) {
+                    if ($googlednsRecord['name'] === $removedRecord['name']
+                        && $googlednsRecord['type'] === $removedRecord["type"]
+                    ) {
+                        $googlednsFound = $googlednsRecord;
+                        break;
+                    }
+                }
+
+                if (!$googlednsFound) {
+                    continue;
+                }
+
+                $deletions[] = Modules_Googledns_Form_Settings::createResourceRecordSet($pleskDomain, $googlednsFound, true);
             }
 
             $change = new Google_Service_Dns_Change();
@@ -268,7 +303,9 @@ class Modules_Googledns_Client {
             try {
                 $dns->changes->create(pm_Settings::get(Modules_Googledns_Form_Settings::PROJECT_ID), $zones[$domain], $change);
             } catch (Exception $e) {
-                throw new pm_Exception("Google DNS Error: " . json_encode($e));
+                $msg = "Google DNS Error: " . $e->getMessage();
+                $this->logger->error($msg);
+                throw new pm_Exception($msg);
             }
 
             /** @var array $entry */
@@ -332,28 +369,34 @@ class Modules_Googledns_Client {
     {
         $zoneId = array_flip($this->getZones())[$domainName];
         if (!$zoneId) {
-            throw new Exception('Google DNS domain not found');
+            $msg = 'Google DNS domain not found';
+            $this->logger->error($msg);
+            throw new pm_Exception($msg);
         }
 
         $client = $this->authenticate();
         $dns = new Google_Service_Dns($client);
 
         try {
-            $result = $dns->resourceRecordSets->listResourceRecordSets('velvety-being-233017', $zoneId);
+            $result = $dns->resourceRecordSets->listResourceRecordSets(pm_Settings::get(Modules_Googledns_Form_Settings::PROJECT_ID), $zoneId);
         } catch (Exception $e) {
-            throw new Exception('Google DNS domain not found');
+            $msg = 'Google DNS domain not found';
+            $this->logger->error($msg);
+            throw new pm_Exception($msg);
         }
 
         if (!isset($result['rrsets'])) {
-            throw new Exception('Google DNS Error: Rrsets parameter not found');
+            $msg = 'Google DNS Error: Rrsets parameter not found';
+            $this->logger->error($msg);
+            throw new pm_Exception($msg);
         }
 
         $records = [];
         foreach ($result['rrsets'] as $dnsEntry) {
             /** @var array $dnsEntry */
             $name = rtrim($dnsEntry['name'], '.');
-            $content = str_replace('"', '', implode(' ', $dnsEntry['rrdatas']));
-            $records["{$name}||{$dnsEntry['type']}||{$content}"] = [
+            $content = str_replace('"', '', $dnsEntry['rrdatas']);
+            $records["{$name}||{$dnsEntry['type']}"] = [
                 'name'         => $dnsEntry['name'],
                 'ttl'          => $dnsEntry['ttl'],
                 'type'         => $dnsEntry['type'],
@@ -371,8 +414,11 @@ class Modules_Googledns_Client {
         $pleskDomain = pm_Domain::getByName($domainName);
         if (!$refresh) {
             try {
-                $db = pm_Bootstrap::getDbAdapter();
-                $localRecords = $db->fetchRow($db->select()->from('googledns_domains')->where('domain = ?', $domainName));
+                $query = Db::adapter()->prepare("SELECT * FROM googledns_domains WHERE domain = :domain");
+                $query->execute([
+                    'domain' => $domainName
+                ]);
+                $localRecords = $query->fetch();
                 if (!$localRecords) {
                     $localRecords = ['dns' => ''];
                 }
@@ -388,7 +434,8 @@ class Modules_Googledns_Client {
                     continue;
                 }
 
-                $records["{$localRecord['name']}||{$localRecord['type']}||{$localRecord['content']}"] = [
+                $record_key = "{$localRecord['name']}||{$localRecord['type']}";
+                $records[$record_key] = [
                     'name'    => $localRecord['name'],
                     'ttl'     => Modules_Googledns_Form_Settings::getTtl($pleskDomain->getId()),
                     'type'    => $localRecord['type'],
@@ -420,20 +467,24 @@ APICALL;
                 $type = $localRecord['data']['type'];
                 $content = static::formatContentForGoogledns($domain, $localRecord['data']['value']);
 
-//                if (($type === 'MX' && $name === '@') || $type === 'NS') {
-//                    continue;
-//                }
                 if ($type === 'NS') {
                     continue;
                 }
 
-                $records["{$name}||{$type}||{$content}"] = [
-                    'name'    => $name,
-                    'ttl'     => Modules_Googledns_Form_Settings::getTtl($pleskDomain->getId()),
-                    'type'    => $type,
-                    'content' => $content,
-                    'opt'     => $localRecord['data']['opt']
-                ];
+                $record_key = "{$name}||{$type}";
+                if (array_key_exists($record_key, $records)) {
+                    $records[$record_key]['content'][] = $content;
+                } else {
+                    $records[$record_key] = [
+                        'name'    => $name,
+                        'ttl'     => Modules_Googledns_Form_Settings::getTtl($pleskDomain->getId()),
+                        'type'    => $type,
+                        'content' => [
+                            $content,
+                        ],
+                        'opt'     => $localRecord['data']['opt']
+                    ];
+                }
             }
         }
 
@@ -450,11 +501,15 @@ APICALL;
      */
     private function setDomainInfo($domainName, $info)
     {
-        $db = pm_Bootstrap::getDbAdapter();
-        $db->delete('googledns_domains', "`domain` = {$db->quote($domainName)}");
-        $db->insert('googledns_domains', [
+        $query = Db::adapter()->prepare("DELETE FROM googledns_domains WHERE domain = :domain");
+        $query->execute([
+            'domain' => $domainName
+        ]);
+
+        $query = Db::adapter()->prepare("INSERT INTO googledns_domains (domain, dns) VALUES(:domain, :dns)");
+        $query->execute([
             'domain' => $domainName,
-            'dns'    => json_encode($info),
+            'dns'    => json_encode($info)
         ]);
     }
 
@@ -504,7 +559,9 @@ APICALL;
     public function authenticate()
     {
         if (!$access_token = json_decode(pm_Settings::get(Modules_Googledns_Form_Settings::ACCESS_TOKEN), true)) {
-            throw new pm_Exception('Google DNS Error: Access Token not setted');
+            $msg = 'Google DNS Error: Access Token not setted';
+            $this->logger->error($msg);
+            throw new pm_Exception($msg);
         }
 
         try {
@@ -513,11 +570,16 @@ APICALL;
             if ($this->google_client->isAccessTokenExpired()) {
                 if (!$refresh_token = pm_Settings::get(Modules_Googledns_Form_Settings::REFRESH_TOKEN)) {
                     $this->revokeAccessToken();
-                    throw new pm_Exception('Google DNS Error: Couldn\'t find refresh token');
+
+                    $msg = 'Google DNS Error: Couldn\'t find refresh token';
+                    $this->logger->error($msg);
+                    throw new pm_Exception($msg);
                 }
 
                 if (!$new_token = $this->google_client->refreshToken(json_decode($refresh_token, true))) {
-                    throw new pm_Exception('Google DNS Error: Couldn\'t refresh access token');
+                    $msg = 'Google DNS Error: Couldn\'t refresh access token - ' . is_string($refresh_token) ? $refresh_token : json_encode($refresh_token);
+                    $this->logger->error($msg);
+                    throw new pm_Exception($msg);
                 }
 
                 pm_Settings::set(Modules_Googledns_Form_Settings::ACCESS_TOKEN, json_encode($new_token));
@@ -526,6 +588,7 @@ APICALL;
             return $this->google_client;
         } catch (Exception $e) {
             pm_Settings::set(Modules_Googledns_Form_Settings::ACCESS_TOKEN, null);
+            $this->logger->error(json_encode($e));
             throw $e;
         }
     }
@@ -542,18 +605,39 @@ APICALL;
     {
         $this->google_client->authenticate($code);
 
-        if (!$access_token = $this->google_client->getAccessToken()) {
-            throw new pm_Exception("Cant get Google DNS Access Token");
+        try {
+            if (!$access_token = $this->google_client->getAccessToken()) {
+                $msg = "Cant get Google DNS Access Token";
+                $this->logger->error($msg);
+                throw new pm_Exception($msg);
+
+            }
+        } catch (Exception $e) {
+            $msg = "Google DNS Error: " . json_encode($e);
+            $this->logger->error($msg);
+            throw new pm_Exception($msg);
         }
 
         if (!array_key_exists("refresh_token", $access_token)) {
-            $this->revokeAccessToken($access_token);
-            throw new pm_Exception("Cant get Google DNS Refresh Token");
+            try {
+                $this->revokeAccessToken($access_token);
+            } catch (Exception $e) {
+                $msg = "Google DNS Error: " . json_encode($e);
+                $this->logger->error($msg);
+                throw new pm_Exception($msg);
+            }
+            $msg = "Cant get Google DNS Refresh Token";
+            $this->logger->error($msg);
+            throw new pm_Exception($msg);
         }
 
-        pm_Settings::set(Modules_Googledns_Form_Settings::REFRESH_TOKEN, json_encode($access_token['refresh_token']));
+        try {
+            pm_Settings::set(Modules_Googledns_Form_Settings::REFRESH_TOKEN, json_encode($access_token['refresh_token']));
 
-        pm_Settings::set(Modules_Googledns_Form_Settings::ACCESS_TOKEN, json_encode($access_token));
+            pm_Settings::set(Modules_Googledns_Form_Settings::ACCESS_TOKEN, json_encode($access_token));
+        } catch (Exception $e) {
+            $this->logger->error("Cant set Google DNS Refresh and Access token on pm_Settings");
+        }
 
         return $access_token;
     }
@@ -584,14 +668,17 @@ APICALL;
     public function createGoogleClient()
     {
         $client = new Google_Client();
-        $client->setAuthConfig([
-            "web" => [
-                "client_id"     => $this->client_id,
-                "project_id"    => $this->project_id,
-                "client_secret" => $this->client_secret,
-                "redirect_uris" => $this->redirect_uris
-            ]
-        ]);
+        if ($this->client_id && $this->project_id && $this->client_secret) {
+            $client->setAuthConfig([
+                "web" => [
+                    "client_id"     => $this->client_id,
+                    "project_id"    => $this->project_id,
+                    "client_secret" => $this->client_secret,
+                    "redirect_uris" => $this->redirect_uris
+                ]
+            ]);
+        }
+        $client->setRedirectUri($this->redirect_uris[0]);
         $client->setAccessType('offline');
         $client->setIncludeGrantedScopes(true);
         $client->addScope(Google_Service_Dns::NDEV_CLOUDDNS_READWRITE);

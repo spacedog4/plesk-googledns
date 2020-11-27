@@ -10,6 +10,14 @@
           <option name="port" value="2225" />
         </fileTransfer>
       </webServer>
+      <webServer id="77cf003d-d307-4130-b790-02887d2d08c8" name="Prod" url="http://ftp.naifersistemas.com.br">
+        <fileTransfer host="ftp.naifersistemas.com.br" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

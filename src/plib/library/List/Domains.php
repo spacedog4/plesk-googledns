@@ -31,7 +31,7 @@
  */
 class Modules_Googledns_List_Domains extends pm_View_List_Simple {
 
-    const DOMAINS = 'domains';
+    const DOMAINS = 'googledns_domains';
 
     private $helper;
 

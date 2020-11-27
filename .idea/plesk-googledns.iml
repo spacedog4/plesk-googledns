@@ -2,6 +2,10 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/modules/googledns/library" isTestSource="false" packagePrefix="PleskExt\GoogleDns\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/plib/library" isTestSource="true" packagePrefix="PleskExt\GoogleDns\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/plib/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/plib/vendor/firebase/php-jwt" />
       <excludeFolder url="file://$MODULE_DIR$/plib/vendor/google/apiclient" />
@@ -16,6 +20,20 @@
       <excludeFolder url="file://$MODULE_DIR$/plib/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/plib/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/plib/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/firebase/php-jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/google/apiclient" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/google/apiclient-services" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/google/auth" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/phpseclib/phpseclib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/src/plib/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/firebase/php-jwt" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/google/apiclient" />

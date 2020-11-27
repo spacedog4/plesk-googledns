@@ -29,5 +29,4 @@
 pm_Loader::registerAutoload();
 pm_Context::init('googledns');
 
-$adapter = pm_Bootstrap::getDbAdapter();
-$adapter->query('DROP TABLE IF EXISTS googledns_domains');
+pm_Settings::clean('googledns');

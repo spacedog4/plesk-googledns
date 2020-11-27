@@ -30,21 +30,75 @@
 <?php echo $this->renderTabs($this->tabs); ?>
     <legend><?= pm_Locale::lmsg('googlednsCredentials'); ?></legend>
     <span><?= pm_Locale::lmsg('googlednsDescriptionWindow'); ?></span>
-<br/>
-<br/>
 
-<?php echo $this->renderSmallTools($this->smallTools); ?>
+<?php if (pm_Settings::get(Modules_Googledns_Form_Settings::CLIENT_ID)
+    && pm_Settings::get(Modules_Googledns_Form_Settings::CLIENT_SECRET)) { ?>
+    <br/>
+    <br/>
+    <?php echo $this->renderSmallTools($this->smallTools); ?>
+<?php } ?>
 
-<?php if (!pm_Settings::get(Modules_Googledns_Form_Settings::ACCESS_TOKEN)) { ?>
-    <p style="color: #ff5a00" title="<?php echo $this->lmsg('googleDnsStatusDisabledMessageHint'); ?>">
-        <img width="22" style="margin-right: 5px" src="/theme-skins/plesk/icons/16/plesk/warning.png?1537850981"/>
-        <b><?php echo $this->lmsg('googleDnsStatusDisabledMessage'); ?></b>
-    </p>
-<?php } else { ?>
-    <p style="color: #80af26">
-        <img width="22" style="margin-right: 5px" src="/theme-skins/plesk/icons/16/plesk/on.png?1537850981"/>
-        <b><?php echo $this->lmsg('googleDnsStatusEnabledMessage'); ?></b>
-    </p>
+<?php if (pm_Settings::get(Modules_Googledns_Form_Settings::CLIENT_ID)
+    && pm_Settings::get(Modules_Googledns_Form_Settings::CLIENT_SECRET)
+    && pm_Settings::get(Modules_Googledns_Form_Settings::PROJECT_ID)) { ?>
+    <?php if (!pm_Settings::get(Modules_Googledns_Form_Settings::ACCESS_TOKEN)) { ?>
+        <p style="color: #ff5a00" title="<?php echo $this->lmsg('googleDnsStatusDisabledMessageHint'); ?>">
+            <img width="22" style="margin-right: 5px" src="/theme-skins/plesk/icons/16/plesk/warning.png?1537850981"/>
+            <b><?php echo $this->lmsg('googleDnsStatusDisabledMessage'); ?></b>
+        </p>
+    <?php } else { ?>
+        <p style="color: #80af26">
+            <img width="22" style="margin-right: 5px" src="/theme-skins/plesk/icons/16/plesk/on.png?1537850981"/>
+            <b><?php echo $this->lmsg('googleDnsStatusEnabledMessage'); ?></b>
+        </p>
+    <?php } ?>
 <?php } ?>
     <hr/>
 <?php echo $this->form; ?>
+
+<hr/>
+
+<p><?php echo $this->lmsg('supportMe'); ?></p>
+<form action="https://www.paypal.com/donate" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_donations" />
+    <input type="hidden" name="business" value="GXSHAPXEWM8QU" />
+    <input type="hidden" name="currency_code" value="USD" />
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+    <img alt="" border="0" src="https://www.paypal.com/en_BR/i/scr/pixel.gif" width="1" height="1" />
+</form>
+
+<br/>
+<h3><?php echo $this->lmsg('helpToGetInfo'); ?></h3>
+<br/>
+
+<h5><?php echo $this->lmsg('step1Title'); ?></h5>
+<ul>
+    <li><?php echo $this->lmsg('hintGoTo'); ?> <a href="https://console.developers.google.com/apis/dashboard" target="_blank">Google Api Console</a></li>
+    <li><?php echo $this->lmsg('hintProject'); ?></li>
+    <li><?php echo $this->lmsg('step1Hint3'); ?> <a href="https://console.developers.google.com/apis/library/dns.googleapis.com" target="_blank">Cloud DNS API</a></li>
+    <li><?php echo $this->lmsg('step1Hint4'); ?></li>
+</ul>
+
+<h5><?php echo $this->lmsg('step2Title'); ?> <a href="https://console.developers.google.com/apis/credentials/consent" target="_blank"><?php echo $this->lmsg('step2TitleLink'); ?></a></h5>
+<ul>
+    <li><?php echo $this->lmsg('hintGoTo'); ?> <a href="https://console.developers.google.com/apis/dashboard" target="_blank">Google Api Console</a></li>
+    <li><?php echo $this->lmsg('hintProject'); ?></li>
+    <li><?php echo $this->lmsg('hintLeftMenu'); ?> <a href="https://console.developers.google.com/apis/credentials/consent" target="_blank"><?php echo $this->lmsg('step2Hint3Link'); ?></a></li>
+    <li><?php echo $this->lmsg('step2Hint4'); ?></li>
+    <li><?php echo $this->lmsg('step2Hint5'); ?></li>
+    <li><?php echo $this->lmsg('step2Hint6'); ?></li>
+    <li><?php echo $this->lmsg('step2Hint7'); ?></li>
+    <li><?php echo $this->lmsg('step2Hint8'); ?></li>
+</ul>
+
+<h5><?php echo $this->lmsg('step3Title'); ?></h5>
+<ul>
+    <li><?php echo $this->lmsg('hintGoTo'); ?> <a href="https://console.developers.google.com/apis/dashboard" target="_blank">Google Api Console</a></li>
+    <li><?php echo $this->lmsg('hintProject'); ?></li>
+    <li><?php echo $this->lmsg('hintLeftMenu'); ?> <a href="https://console.developers.google.com/apis/credentials" target="_blank"><?php echo $this->lmsg('step3Hint3Link'); ?></a></li>
+    <li><?php echo $this->lmsg('step3Hint4'); ?></li>
+    <li><?php echo $this->lmsg('step3Hint5'); ?></li>
+    <li><?php echo $this->lmsg('step3Hint6'); ?></li>
+    <li><?php echo $this->lmsg('step3Hint7'); ?></li>
+    <li><?php echo $this->lmsg('step3Hint8'); ?></li>
+</ul>

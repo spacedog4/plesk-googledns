@@ -32,6 +32,20 @@
       <path value="$PROJECT_DIR$/plib/vendor/google/apiclient-services" />
       <path value="$PROJECT_DIR$/plib/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/plib/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/google/apiclient" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/composer" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/src/plib/vendor/guzzlehttp/psr7" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

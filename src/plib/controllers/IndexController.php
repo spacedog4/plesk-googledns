@@ -26,6 +26,8 @@
  * @license MIT
  */
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 class IndexController extends pm_Controller_Action {
 
     /**
@@ -35,12 +37,13 @@ class IndexController extends pm_Controller_Action {
     {
         parent::init();
 
-        if (!pm_Session::getClient()->isAdmin()) {
-            throw new pm_Exception('Permission denied');
-        }
+//        if (!pm_Session::getClient()->isAdmin()) {
+//            throw new pm_Exception('Permission denied');
+//        }
         /** @noinspection PhpUndefinedFieldInspection */
         $this->view->pageTitle = $this->lmsg('pageTitle');
         $this->view->tabs = $this->_getTabs();
+
     }
 
     /**
@@ -50,6 +53,10 @@ class IndexController extends pm_Controller_Action {
      */
     public function indexAction()
     {
+//        pm_Log::info("indexController Google DNS");
+//        $logger = pm_Bootstrap::getContainer()->get(Psr\Log\LoggerInterface::class);
+//        $logger->error('indexController Google DNS');
+
         $form = new Modules_Googledns_Form_Settings();
 
         if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost())) {

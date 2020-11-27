@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="localhost" id="6351294f-a2ec-45ed-869b-70a587bc8085" port="2225" customName="Plesk Dev" nameFormat="CUSTOM" username="siacom">
+        <option name="customName" value="Plesk Dev" />
+      </sshConfig>
+      <sshConfig authType="PASSWORD" host="ftp.naifersistemas.com.br" id="0cacd7f1-133e-4c93-ae0c-febc4d74645e" port="22" customName="Prod" nameFormat="CUSTOM" username="root">
+        <option name="customName" value="Prod" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

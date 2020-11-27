@@ -29,8 +29,8 @@
 /**
  * Class Modules_Cloudflaredns_Form_Settings
  */
-class Modules_Googledns_Form_Settings extends pm_Form_Simple
-{
+class Modules_Googledns_Form_Settings extends pm_Form_Simple {
+
     const ACCESS_TOKEN = 'googledns_access_token';
     const REFRESH_TOKEN = 'googledns_refresh_token';
     const CLIENT_ID = 'googledns_client_id';
@@ -64,6 +64,7 @@ class Modules_Googledns_Form_Settings extends pm_Form_Simple
 
         $this->addElement('text', static::CLIENT_ID, [
             'label'       => pm_Locale::lmsg('clientIdLabel'),
+            'description' => pm_Locale::lmsg('clientIdHint'),
             'value'       => pm_Settings::get(static::CLIENT_ID),
             'class'       => 'f-large-size',
             'required'    => true,
@@ -74,12 +75,13 @@ class Modules_Googledns_Form_Settings extends pm_Form_Simple
         ]);
         $this->addElement('password', static::CLIENT_SECRET, [
             'label'       => pm_Locale::lmsg('clientSecretLabel'),
+            'description' => pm_Locale::lmsg('clientSecretHint'),
             'value'       => pm_Settings::get(static::CLIENT_SECRET),
-            'required'    => false,
-            'validators'  => [],
+            'required'    => false
         ]);
         $this->addElement('text', static::PROJECT_ID, [
             'label'       => pm_Locale::lmsg('projectIdLabel'),
+            'description' => pm_Locale::lmsg('projectIdHint'),
             'value'       => pm_Settings::get(static::PROJECT_ID),
             'class'       => 'f-large-size',
             'required'    => true,
@@ -101,7 +103,9 @@ class Modules_Googledns_Form_Settings extends pm_Form_Simple
             'validators' => [],
         ]);
         $this->addControlButtons([
-            'cancelLink' => pm_Context::getModulesListUrl(),
+            'sendTitle'    => pm_Locale::lmsg('formSendTitle'),
+            'cancelHidden' => true
+//            'cancelLink' => pm_Context::getModulesListUrl(),
         ]);
     }
 
@@ -195,7 +199,7 @@ class Modules_Googledns_Form_Settings extends pm_Form_Simple
 </packet>
 APICALL;
             $response = pm_ApiRpc::getService(Modules_Googledns_Client::SERVICE_VERSION)->call($request);
-            $savedTtl = isset($response->dns->get->result->soa->ttl) ? (int) $response->dns->get->result->soa->ttl : 300;
+            $savedTtl = isset($response->dns->get->result->soa->ttl) ? (int)$response->dns->get->result->soa->ttl : 300;
         }
 
         $saved[$id] = $savedTtl;
@@ -206,22 +210,61 @@ APICALL;
     /**
      * @param $pleskDomain
      * @param $record
+     * @param bool $deleting
      * @return Google_Service_Dns_ResourceRecordSet
      * @throws pm_Exception
      */
-    public static function createResourceRecordSet($pleskDomain, $record) {
+    public static function createResourceRecordSet($pleskDomain, $record, $deleting = false)
+    {
         $addition = new Google_Service_Dns_ResourceRecordSet();
         $addition->setKind('dns#resourceRecordSet');
         $addition->setName($record['name']);
 
-        $content = is_string($record['opt']) ? $record['opt'] . " " . $record['content'] : $record['content'];
+        if ($record['type'] == 'TXT' && $deleting) {
+            $rrdatas = [];
 
-        $addition->setRrdatas([
-            $content
-        ]);
+            foreach ($record['content'] as $record_content) {
+                $new_rrdatas = array_map(function ($item) {
+                    return "\"" . trim($item) . "\"";
+                }, explode(';', $record_content));
+
+                $rrdatas[] = implode(" ", $new_rrdatas);
+            }
+        } else {
+            if (is_string($record['opt'])) {
+                $content = array_map(function ($content) use ($record) {
+                    return $record['opt'] . " " . $content;
+                }, $record['content']);
+            } else {
+                $content = $record['content'];
+            }
+//            $content = is_string($record['opt']) ? $record['opt'] . " " . $record['content'] : $record['content'];
+
+            if ($record['type'] == 'TXT') {
+                $rrdatas = [];
+
+                foreach ($record['content'] as $record_content) {
+                    $new_rrdatas = array_map(function ($item) {
+                        return "\"" . trim($item) . "\"";
+                    }, explode(';', $record_content));
+
+                    $rrdatas[] = implode(" ", $new_rrdatas);
+                }
+//                $rrdatas = array_map(function ($item) {
+//                    return "\"" . trim($item) . "\"";
+//                }, explode(';', $content));
+//
+//                $rrdatas = implode(" ", $rrdatas);
+            } else {
+                $rrdatas = $content;
+            }
+        }
+
+        $addition->setRrdatas($rrdatas);
         $addition->setTtl((int)static::getTtl($pleskDomain->getId()));
         $addition->setSignatureRrdatas([]);
         $addition->setType($record['type']);
+
 
         return $addition;
     }

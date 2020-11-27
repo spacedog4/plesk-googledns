@@ -25,6 +25,21 @@
  * @author André Luis Monteiro <andre_luis_monteiro1998@hotmail.com>
  * @license MIT
  */
+use PleskExt\GoogleDns\Db;
 
-pm_Loader::registerAutoload();
-pm_Context::init('googledns');
+try {
+    if (!file_exists(Db::path())) {
+        $file = Db::path();
+
+        touch($file);
+        chmod($file, 0600);
+
+    }
+
+    Db::adapter()->exec("CREATE TABLE IF NOT EXISTS `googledns_domains` (`domain` VARCHAR(255) NOT NULL PRIMARY KEY, `dns` LONGTEXT)");
+} catch (Exception $e) {
+    $logger = pm_Bootstrap::getContainer()->get(Psr\Log\LoggerInterface::class);
+    $logger->error($e);
+
+    exit(1);
+}

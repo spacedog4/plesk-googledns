@@ -1,3 +1,7 @@
+[Support me with any value](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=GXSHAPXEWM8QU&currency_code=USD)
+
+Any issue or improvement? share it on my repository: https://github.com/spacedog4/plesk-googledns
+
 This extension integrates Plesk with Google DNS, so you can:
 - Synchronize all DNS zones records between Plesk and Google DNS name servers at once
 - Push DNS updates automatically to Google DNS
