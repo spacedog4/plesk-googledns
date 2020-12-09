@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="976a93a1-3273-4d51-8b5b-c2bfc596a0cf" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/plib/library/Db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/plesk-googledns.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/plesk-googledns.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/googlelogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_meta/descriptions/en-US.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/_meta/descriptions/en-US.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_meta/descriptions/pt-BR.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/_meta/descriptions/pt-BR.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/meta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/meta.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/controllers/IndexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plib/library/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/library/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/library/EventListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/library/EventListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/library/Form/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/library/Form/Settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/library/List/Domains.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/library/List/Domains.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/resources/locales/en-US.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/resources/locales/en-US.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/resources/locales/pt-BR.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/resources/locales/pt-BR.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/scripts/post-install.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/scripts/post-install.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/scripts/pre-install.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/scripts/pre-uninstall.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/scripts/pre-uninstall.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plib/views/scripts/index/index.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plib/views/scripts/index/index.phtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +146,9 @@
       <workItem from="1598012575251" duration="525000" />
       <workItem from="1604666432730" duration="893000" />
       <workItem from="1605787947509" duration="743000" />
-      <workItem from="1606487050126" duration="200000" />
+      <workItem from="1606487050126" duration="2972000" />
+      <workItem from="1606824527507" duration="597000" />
+      <workItem from="1607521090000" duration="42000" />
     </task>
     <servers />
   </component>
@@ -182,5 +164,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1605788502673" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607521101996">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1607521101996" />
   </component>
 </project>

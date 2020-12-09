@@ -71,8 +71,6 @@ class Modules_Googledns_Client {
 
         $this->logger = pm_Bootstrap::getContainer()->get(Psr\Log\LoggerInterface::class);
 
-        pm_Log::info()
-
         $this->redirect_uris = [
             ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? "https://" : "http://") .
             $_SERVER['HTTP_HOST'] .
